@@ -146,9 +146,13 @@
     <ClInclude Include="..\gfx\gfx_imgui.h" />
     <ClInclude Include="..\gfx\gfx_window.h" />
     <ClInclude Include="..\include\asdxApp.h" />
+    <ClInclude Include="..\include\asdxHid.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\asdxApp.cpp" />
+    <ClCompile Include="..\src\asdxGamePad.cpp" />
+    <ClCompile Include="..\src\asdxKeyboard.cpp" />
+    <ClCompile Include="..\src\asdxMouse.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
