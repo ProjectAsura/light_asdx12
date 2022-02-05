@@ -143,11 +143,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\gfx\gfx.h" />
-    <ClInclude Include="..\gfx\gfx_core.h" />
-    <ClInclude Include="..\gfx\gfx_imgui.h" />
-    <ClInclude Include="..\gfx\gfx_scene.h" />
-    <ClInclude Include="..\gfx\gfx_window.h" />
+    <ClInclude Include="..\external\gfx\gfx.h" />
+    <ClInclude Include="..\external\gfx\gfx_core.h" />
+    <ClInclude Include="..\external\gfx\gfx_imgui.h" />
+    <ClInclude Include="..\external\gfx\gfx_scene.h" />
+    <ClInclude Include="..\external\gfx\gfx_window.h" />
     <ClInclude Include="..\include\asdxApp.h" />
     <ClInclude Include="..\include\asdxBuiltinShader.h" />
     <ClInclude Include="..\include\asdxHid.h" />
