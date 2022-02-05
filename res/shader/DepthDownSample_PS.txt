@@ -1,0 +1,18 @@
+R"(
+
+struct VSOutput
+{
+    float4 Position : SV_POSITION;
+    float2 TexCoord : TEXCOORD0;
+};
+
+Texture2D    DepthMap;
+SamplerState DepthSmp;
+
+float main(const VSOutput input) : SV_TARGET0
+{
+     float4 depth = DepthMap.GatherRed(DepthSmp, input.TexCoord);
+     return min(min(depth.x, depth.y), min(depth.z, depth.w));
+}
+
+)"

@@ -1,0 +1,21 @@
+R"(
+
+struct VSOutput
+{
+    float4 Position : SV_POSITION;
+    float2 TexCoord : TEXCOORD0;
+};
+
+float g_NearClip;
+float g_FarClip;
+
+Texture2D    DepthMap;
+SamplerState DepthSmp;
+
+float main(const VSOutput input) : SV_TARGET0
+{
+    float hardwareDepth = DepthMap.SampleLevel(DepthSmp, input.TexCoord, 0).r;
+    return -g_NearClip / (hardwareDepth * (g_NearClip - g_FarClip) + g_FarClip);
+}
+
+)"
