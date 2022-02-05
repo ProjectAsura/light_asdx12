@@ -49,7 +49,7 @@ void App::Run()
 bool App::Init()
 {
     {
-        const char* path = "../gfx/third_party/WinPixEventRuntime-1.0.200127001/bin/x64/WinPixEventRuntime.dll";
+        const char* path = "../external/gfx/third_party/WinPixEventRuntime-1.0.200127001/bin/x64/WinPixEventRuntime.dll";
         m_HandlePix = LoadLibraryA(path);
         if (m_HandlePix == NULL)
         { return false; }

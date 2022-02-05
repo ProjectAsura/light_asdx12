@@ -24,7 +24,7 @@
 #pragma comment(lib, "winmm.lib" )
 #pragma comment(lib, "comctl32.lib" )
 #pragma comment(lib, "dxcompiler.lib" )
-#pragma comment(lib, "../gfx/third_party/WinPixEventRuntime-1.0.200127001/bin/x64/WinPixEventRuntime.lib")
+#pragma comment(lib, "../external/gfx/third_party/WinPixEventRuntime-1.0.200127001/bin/x64/WinPixEventRuntime.lib")
 #endif
 
 

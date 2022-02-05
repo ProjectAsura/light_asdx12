@@ -1,0 +1,3 @@
+[submodule "external/gfx"]
+	path = external/gfx
+	url = https://github.com/ProjectAsura/gfx.git
