@@ -11,7 +11,6 @@
 #include <gfx.h>
 #include <gfx_window.h>
 #include <gfx_imgui.h>
-#include <gfx_scene.h>
 
 
 #ifdef ASDX_AUTO_LINK
@@ -47,19 +46,19 @@ public:
     uint32_t GetWidth   () const;
     uint32_t GetHeight  () const;
 
+    void       DrawQuad     ();
+    GfxTexture CreateTexture(const char* path);
+
 protected:
     virtual bool    OnInit      (GfxContext context) { return true; }
     virtual void    OnTerm      (GfxContext context) {}
     virtual void    OnDraw      (GfxContext context) {}
     GfxWindow       GetWindow   () const;
     GfxContext      GetContext  () const;
-    GfxScene        GetScene    () const;
-    void            DrawQuad    ();
 
 private:
     GfxContext  m_Context;
     GfxWindow   m_Window;
-    GfxScene    m_Scene;
     const char* m_Title     = nullptr;
     uint32_t    m_Width     = 1920;
     uint32_t    m_Height    = 1080;

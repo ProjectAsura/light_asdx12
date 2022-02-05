@@ -33,10 +33,13 @@
     <ClInclude Include="..\external\gfx\gfx_imgui.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="..\external\gfx\gfx_scene.h">
+    <ClInclude Include="..\external\gfx\gfx_window.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="..\external\gfx\gfx_window.h">
+    <ClInclude Include="..\include\asdxMath.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\asdxResTexture.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
@@ -56,10 +59,16 @@
     <ClCompile Include="..\src\asdxBuiltinShader.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\asdxResTexture.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\res\shader\Quad_VS.txt">
       <Filter>リソース ファイル</Filter>
+    </None>
+    <None Include="..\include\asdxMath.inl">
+      <Filter>ヘッダー ファイル</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

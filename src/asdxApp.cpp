@@ -9,6 +9,8 @@
 // Includes
 //-----------------------------------------------------------------------------
 #include <asdxApp.h>
+#include <asdxMath.h>
+#include <asdxResTexture.h>
 
 
 namespace asdx {
@@ -50,20 +52,19 @@ bool App::Init()
 {
     m_Window  = gfxCreateWindow(m_Width, m_Height, m_Title);
     m_Context = gfxCreateContext(m_Window);
-    m_Scene   = gfxCreateScene();
 
     // Quad for PostProcess.
     {
         struct QuadVertex
         {
-            glm::vec2 Pos;
-            glm::vec2 Uv;
+            Vector2 Pos;
+            Vector2 Uv;
         };
 
         QuadVertex vertices[] = {
-            { glm::vec2(-1.0f,  1.0f), glm::vec2(0.0f, 0.0f) },
-            { glm::vec2( 3.0f,  1.0f), glm::vec2(2.0f, 0.0f) },
-            { glm::vec2(-1.0f, -3.0f), glm::vec2(0.0f, 2.0f) },
+            { Vector2(-1.0f,  1.0f), Vector2(0.0f, 0.0f) },
+            { Vector2( 3.0f,  1.0f), Vector2(2.0f, 0.0f) },
+            { Vector2(-1.0f, -3.0f), Vector2(0.0f, 2.0f) },
         };
 
         m_QuadVB = gfxCreateBuffer(m_Context, sizeof(vertices), vertices);
@@ -82,7 +83,6 @@ void App::Term()
 {
     OnTerm(m_Context);
     gfxDestroyBuffer(m_Context, m_QuadVB);
-    gfxDestroyScene(m_Scene);
     gfxDestroyContext(m_Context);
     gfxDestroyWindow(m_Window);
 }
@@ -144,12 +144,6 @@ GfxContext App::GetContext() const
 { return m_Context; }
 
 //-----------------------------------------------------------------------------
-//      シーンを取得します.
-//-----------------------------------------------------------------------------
-GfxScene App::GetScene() const
-{ return m_Scene; }
-
-//-----------------------------------------------------------------------------
 //      横幅を取得します.
 //-----------------------------------------------------------------------------
 uint32_t App::GetWidth() const
@@ -168,6 +162,76 @@ void App::DrawQuad()
 {
     gfxCommandBindVertexBuffer(m_Context, m_QuadVB);
     gfxCommandDraw(m_Context, 3);
+}
+
+//-----------------------------------------------------------------------------
+//      テクスチャを生成します.
+//-----------------------------------------------------------------------------
+GfxTexture App::CreateTexture(const char* path)
+{
+    GfxTexture result = {};
+
+    ResTexture resTexture;
+    if (!resTexture.LoadFromFileA(path))
+    {
+        resTexture.Dispose();
+        return result;
+    }
+
+    GfxBuffer buffer = gfxCreateBuffer(
+        m_Context,
+        resTexture.PixelSize,
+        resTexture.pPixels,
+        kGfxCpuAccess_Write);
+    if (buffer.getSize() == 0)
+    {
+        resTexture.Dispose();
+        return result;
+    }
+
+    switch(resTexture.Dimension)
+    {
+    case TEXTURE_DIMENSION_1D:
+        result = gfxCreateTexture2D(
+            m_Context,
+            resTexture.Width,
+            1u, (DXGI_FORMAT)resTexture.Format,
+            resTexture.MipMapCount);
+        break;
+
+    case TEXTURE_DIMENSION_2D:
+        result = gfxCreateTexture2D(
+            m_Context,
+            resTexture.Width,
+            resTexture.Height,
+            (DXGI_FORMAT)resTexture.Format,
+            resTexture.MipMapCount);
+        break;
+
+    case TEXTURE_DIMENSION_3D:
+        result = gfxCreateTexture3D(
+            m_Context,
+            resTexture.Width,
+            resTexture.Height,
+            resTexture.Depth,
+            (DXGI_FORMAT)resTexture.Format,
+            resTexture.MipMapCount);
+        break;
+
+    case TEXTURE_DIMENSION_CUBE:
+        result = gfxCreateTextureCube(
+            m_Context,
+            resTexture.Width,
+            (DXGI_FORMAT)resTexture.Format,
+            resTexture.MipMapCount);
+        break;
+    }
+
+    gfxCommandCopyBufferToTexture(m_Context, result, buffer);
+    gfxDestroyBuffer(m_Context, buffer);
+    resTexture.Dispose();
+
+    return result;
 }
 
 } // namespace asdx
