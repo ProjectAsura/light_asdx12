@@ -64,7 +64,6 @@ private:
     uint32_t    m_Width     = 1920;
     uint32_t    m_Height    = 1080;
     GfxBuffer   m_QuadVB;
-    HANDLE      m_HandlePix;
 
     bool Init       ();
     void Term       ();
