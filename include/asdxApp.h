@@ -23,7 +23,6 @@
 #pragma comment(lib, "winmm.lib" )
 #pragma comment(lib, "comctl32.lib" )
 #pragma comment(lib, "dxcompiler.lib" )
-#pragma comment(lib, "../external/gfx/third_party/WinPixEventRuntime-1.0.200127001/bin/x64/WinPixEventRuntime.lib")
 #endif
 
 
@@ -48,6 +47,14 @@ public:
 
     void       DrawQuad     ();
     GfxTexture CreateTexture(const char* path);
+
+    static const char* GetQuadVS            ();
+    static const char* GetLinearDepthPS     ();
+    static const char* GetDepthDownSamplePS ();
+    static const char* GetCopyRedPS         ();
+    static const char* GetCopyGreenPS       ();
+    static const char* GetCopyBluePS        ();
+    static const char* GetCopyAlphaPS       ();
 
 protected:
     virtual bool    OnInit      (GfxContext context) { return true; }

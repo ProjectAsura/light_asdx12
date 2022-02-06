@@ -13,6 +13,35 @@
 #include <asdxResTexture.h>
 
 
+namespace {
+
+//-----------------------------------------------------------------------------
+// Constant Values.
+//-----------------------------------------------------------------------------
+const char g_Quad_VS[] = {
+#include "../res/shader/Quad_VS.txt"
+};
+const char g_LinearDepth_PS[] = {
+#include "../res/shader/LinearDepth_PS.txt"
+};
+const char g_DepthDownSample_PS[] = {
+#include "../res/shader/DepthDownSample_PS.txt"
+};
+const char g_CopyRed_PS[] = {
+#include "../res/shader/CopyRRRR_PS.txt"
+};
+const char g_CopyGreen_PS[] = {
+#include "../res/shader/CopyGGGG_PS.txt"
+};
+const char g_CopyBlue_PS[] = {
+#include "../res/shader/CopyBBBB_PS.txt"
+};
+const char g_CopyAlpha_PS[] = {
+#include "../res/shader/CopyAAAA_PS.txt"
+};
+
+} // namespcae
+
 namespace asdx {
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -233,5 +262,26 @@ GfxTexture App::CreateTexture(const char* path)
 
     return result;
 }
+
+const char* App::GetQuadVS()
+{ return g_Quad_VS; }
+
+const char* App::GetLinearDepthPS()
+{ return g_LinearDepth_PS; }
+
+const char* App::GetDepthDownSamplePS()
+{ return g_DepthDownSample_PS; }
+
+const char* App::GetCopyRedPS()
+{ return g_CopyRed_PS; }
+
+const char* App::GetCopyGreenPS()
+{ return g_CopyGreen_PS; }
+
+const char* App::GetCopyBluePS()
+{ return g_CopyBlue_PS; }
+
+const char* App::GetCopyAlphaPS()
+{ return g_CopyAlpha_PS; }
 
 } // namespace asdx

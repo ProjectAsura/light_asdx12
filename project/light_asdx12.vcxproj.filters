@@ -21,9 +21,6 @@
     <ClInclude Include="..\include\asdxHid.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\asdxBuiltinShader.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="..\external\gfx\gfx.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
@@ -56,9 +53,6 @@
     <ClCompile Include="..\src\asdxMouse.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\asdxBuiltinShader.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\asdxResTexture.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
@@ -72,25 +66,22 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\res\shader\CopyRGBA_PS.txt">
+    <Text Include="..\res\shader\LinearDepth_PS.txt">
       <Filter>リソース ファイル</Filter>
     </Text>
-    <Text Include="..\res\shader\CopyRRRR_PS.txt">
-      <Filter>リソース ファイル</Filter>
-    </Text>
-    <Text Include="..\res\shader\CopyGGGG_PS.txt">
-      <Filter>リソース ファイル</Filter>
-    </Text>
-    <Text Include="..\res\shader\CopyBBBB_PS.txt">
+    <Text Include="..\res\shader\DepthDownSample_PS.txt">
       <Filter>リソース ファイル</Filter>
     </Text>
     <Text Include="..\res\shader\CopyAAAA_PS.txt">
       <Filter>リソース ファイル</Filter>
     </Text>
-    <Text Include="..\res\shader\LinearDepth_PS.txt">
+    <Text Include="..\res\shader\CopyBBBB_PS.txt">
       <Filter>リソース ファイル</Filter>
     </Text>
-    <Text Include="..\res\shader\DepthDownSample_PS.txt">
+    <Text Include="..\res\shader\CopyGGGG_PS.txt">
+      <Filter>リソース ファイル</Filter>
+    </Text>
+    <Text Include="..\res\shader\CopyRRRR_PS.txt">
       <Filter>リソース ファイル</Filter>
     </Text>
   </ItemGroup>
